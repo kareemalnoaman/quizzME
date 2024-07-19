@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+     {{> includes}}
+</head>
+
+<body>
+    <header>
+    {{> nav}}
+    </header>
+    <div class="bg-image"></div>
+    <!-- <h2>Error</h2> -->
+    <main class="main-panel">
+        <section id="contact" class="contact">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <form id="contactForm">
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" style="height: 60px;"></textarea>
+
+                    <button id="btn-help">Submit</button>
+                </form>
+                <div id="response" style="color: rgb(0, 0, 0);"></div>
+            </div>
+
+        </section><!-- End Contact Section -->
+    </main>
+    <script src="/js/help.js"></script>
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+</body>
+
+</html>

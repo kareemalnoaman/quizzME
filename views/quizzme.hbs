@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+     {{> includes}}
+
+</head>
+
+<body>
+    <header>
+        {{> nav}}
+
+    </header>
+    <main class="timer-container">
+        <section id="knowledge-sec">
+            <lightning-card icon-name="standard:account" variant="base">
+                <div slot="title">
+                    <h2>Generate Questions</h2>
+                    <p>
+                        <center>Test your knowledge with our quizzes</center>
+                    </p>
+                </div>
+                <div slot="actions">
+
+                </div>
+                <div slot="footer">
+
+                </div>
+                <div>
+                    <!-- Card Body  -->
+
+                </div>
+            </lightning-card>
+            <br>
+        </section>
+
+        <div class="bg-image"></div>
+
+        <section class="timer-sec">
+            <div>
+                <div id="timer">3:00</div>
+                <button id="startQuiz">Start Quiz</button>
+            </div>
+
+        </section>
+        <section><br>
+            <button id="btn-subscribe">Subscribe</button>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+    <script src="/js/timer.js"></script>
+</body>
+
+</html>
