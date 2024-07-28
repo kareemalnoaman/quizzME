@@ -4,22 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/public/index.css">
     <title>About Page</title>
-     {{> includes}}
+    {{> includes}}
 </head>
 
 <body>
     <header>
-       {{> nav}}
+        {{> nav}}
     </header>
-    <div class="bg-image"></div>
-    <h2>About QuizzME</h2>
-    <main class="main">
 
-    </main>
+    <lightning-card icon-name="standard:account" variant="base">
+        <div slot="title">
+            <h2>About QuizzME</h2>
+            <p>
+                <center>QuizzME is a quiz application that allows you to test your knowledge on a variety of topics.
+                    You
+                    can generate questions and answers to test your knowledge. You can also subscribe to our
+                    newsletter
+                    to receive updates on new quizzes and features.</center>
+            </p>
+        </div>
+    </lightning-card>
+
 
     <footer>
-        <p>© 2024 QuizzME</p>
+        <p>© 2024 QuizzME <button id="btn-subscribe">Subscribe</button></p>
     </footer>
 </body>
 

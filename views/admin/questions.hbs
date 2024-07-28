@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help</title>
-     {{> includes}}
+    {{> includes}}
 </head>
 
 <body>
     <header>
-    {{> nav}}
+        {{> nav}}
     </header>
     <div class="bg-image"></div>
     <!-- <h2>Error</h2> -->
@@ -20,8 +20,8 @@
                 <h1><button id="btn-add-question">Add question</button></h1>
                 <div id="inputs">
 
-                <div id="response" style="color: rgb(0, 0, 0);"></div>
-            </div>
+                    <div id="response" style="color: rgb(0, 0, 0);"></div>
+                </div>
 
         </section><!-- End Contact Section -->
     </main>
@@ -40,7 +40,7 @@
             category.id = 'category-' + q_id
             inputs.appendChild(category)
             const question = document.createElement('div')
-            question.className = 'question-' + q_id 
+            question.className = 'question-' + q_id
             question.id = q_id
             inputs.appendChild(question)
             const questionSubject = document.createElement('input')
@@ -51,7 +51,7 @@
             let optionNumber = 0;
             question.appendChild(questionSubject)
             question.appendChild(addOption)
-            
+
             const submitQuestion = document.createElement('button')
             submitQuestion.innerHTML = 'Submit Question'
             question.appendChild(submitQuestion)
@@ -89,14 +89,12 @@
 
                 console.log(params.toString())
 
-                axios.post('/admin/questions/add-question', params).then(function(res) {
+                axios.post('/admin/questions/add-question', params).then(function (res) {
                     document.getElementById('response').innerHTML = res.data
-                }).catch(function(err) {
+                }).catch(function (err) {
                     document.getElementById('response').innerHTML = err.response?.data
                 })
             }
-            
-
         }
     </script>
 </body>

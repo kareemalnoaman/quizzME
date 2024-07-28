@@ -10,7 +10,7 @@
 
 <body>
     <header>
-   {{> nav}}
+        {{> nav}}
     </header>
     <div class="bg-image"></div>
     <!-- <h2>Login</h2> -->
@@ -36,11 +36,11 @@
             </div>
         </section>
     </main>
-    
+
     <footer>
         <p>© 2024 QuizzME</p>
         <script>
-            document.getElementById('btn-login').addEventListener('click', function(event) {
+            document.getElementById('btn-login').addEventListener('click', function (event) {
                 event.preventDefault();
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
@@ -48,12 +48,11 @@
                 const params = new URLSearchParams()
                 params.append('email', email)
                 params.append('password', password)
-                axios.post('/login', params).then(function(res) {
-                     window.location = '/'
-                }).catch(function(err) {
+                axios.post('/login', params).then(function (res) {
+                    window.location = '/'
+                }).catch(function (err) {
                     responseMessage.innerHTML = err.response?.data
                     console.log(err);
-
                 });
             });
         </script>

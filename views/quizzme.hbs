@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-     {{> includes}}
+    <title>QuizzME</title>
+    {{> includes}}
 
 </head>
 
@@ -24,7 +24,9 @@
                     </p>
                 </div>
                 <div slot="actions">
-
+                    <p>
+                        {{!-- {{generateRandomQuestions()}} --}}
+                    </p>
                 </div>
                 <div slot="footer">
 
@@ -53,7 +55,34 @@
     <footer>
         <p>© 2024 QuizzME</p>
     </footer>
-    <script src="/js/timer.js"></script>
+
+    {{!--
+    <script src="/quiz.hbs"></script> --}}
+    <script>
+        document.getElementById('btn-subscribe').addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location = '/price'
+        });
+        document.getElementById('startQuiz').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.target.textContent = 'Generating Questions...';
+            generateRandomQuestions();
+
+        });
+        function generateRandomQuestions() {
+            // Logic to generate random math questions
+            const questions = [];
+            for (let i = 0; i < 10; i++) {
+                const num1 = Math.floor(Math.random() * 100);
+                const num2 = Math.floor(Math.random() * 100);
+                questions.push({
+                    question: `What is ${num1} + ${num2}?`,
+                    answer: num1 + num2,
+                });
+            }
+            return questions;
+        }
+    </script>
 </body>
 
 </html>
