@@ -1,9 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: poppins;
-    /* background-color: #386585; */
-    /* background-image: url('../images/math-bg2.jpg'); */
+    /* background-image: url('/public/images/mbgcopy.png'); */
     background-size: cover;
     display: flex;
     justify-content: center;

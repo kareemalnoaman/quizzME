@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/images/mbgcopy.png">
     <title>QuizzME</title>
     {{> includes}}
 
@@ -12,7 +13,6 @@
 <body>
     <header>
         {{> nav}}
-
     </header>
     <main class="timer-container">
         <section id="knowledge-sec">
@@ -56,8 +56,11 @@
         <p>© 2024 QuizzME</p>
     </footer>
 
-    {{!--
-    <script src="/quiz.hbs"></script> --}}
+
+    <script src="/quiz.hbs">
+
+    </script>
+
     <script>
         document.getElementById('btn-subscribe').addEventListener('click', function (event) {
             event.preventDefault();
