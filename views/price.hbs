@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/price.css">
+    <link rel="stylesheet" href="./css/price.css">
     <title>Pricing</title>
     {{> includes}}
 </head>
@@ -13,45 +13,43 @@
     <header>
         {{> nav}}
     </header>
-    <div class="bg-image"></div>
-    <main class="main">
+    <div class="container">
+        <main id="price-container">
+            <div class="columns">
+                <ul class="price">
+                    <li class="header">Free</li>
+                    <li class="grey">$ 0.00 / year</li>
+                    <div class="details">
+                        <li class="text-color">5GB Storage</li>
+                        <li class="text-color">2 Emails</li>
+                        <li class="text-color">1GB Bandwidth</li>
+                    </div>
+                    <li class="grey" id="free-option"><a href="#" class="button">Sign Up</a></li>
+                </ul>
+            </div>
 
-        <div id="heading">
-            <h2>Choose Your Pricing Plan</h2>
-        </div>
-
-
-        <div class="columns">
-            <ul class="price">
-                <li class="header">Free</li>
-                <li class="grey">$ 0.00 / year</li>
-                <div class="details">
-                    <li class="text-color">5GB Storage</li>
-                    <li class="text-color">2 Emails</li>
-                    <li class="text-color">1GB Bandwidth</li>
-                </div>
-                <li class="grey"><a href="#" class="button">Sign Up</a></li>
-            </ul>
-        </div>
-
-        <div class="columns">
-            <ul class="price">
-                <li class="header" style="background-color:#0766ea">Pro</li>
-                <li class="grey">$ 9.99 / year</li>
-                <div class="details">
-                    <li class="text-color">25GB Storage</li>
-                    <li class="text-color">25 Emails</li>
-                    <li class="text-color">5GB Bandwidth</li>
-                </div>
-                <li class="grey"><a href="#" class="button">Sign Up</a></li>
-            </ul>
-        </div>
-
-
-    </main>
+            <div class="columns">
+                <ul class="price">
+                    <li class="header" style="background-color:#0766ea">Pro</li>
+                    <li class="grey">$ 9.99 / year</li>
+                    <div class="details">
+                        <li class="text-color">25GB Storage</li>
+                        <li class="text-color">25 Emails</li>
+                        <li class="text-color">5GB Bandwidth</li>
+                    </div>
+                    <li class="grey" id="paid-option"><a href="#" class="button">Sign Up</a></li>
+                </ul>
+            </div>
+        </main>
+    </div>
     <footer>
         <p>© 2024 QuizzME</p>
     </footer>
+    <script>
+        document.getElementById('free-option').addEventListener('click', function () {
+            window.location.href = 'login'; // Replace 'login.html' with the URL of your login page
+        });
+    </script>
 </body>
 
 </html>

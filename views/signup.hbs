@@ -40,6 +40,9 @@
         <p>© 2024 QuizzME</p>
     </footer>
     <script>
+        document.getElementById('paid-option').addEventListener('click', function () {
+            window.location.href = 'login'; // Replace 'login.html' with the URL of your login page
+        });
         document.getElementById('btn-signup').addEventListener('click', function (event) {
             event.preventDefault();
             const firstName = document.getElementById('firstName').value;
@@ -66,8 +69,6 @@
                 });
             }
         });
-
-
     </script>
 </body>
 

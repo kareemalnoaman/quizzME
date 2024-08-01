@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!--
+    <link rel="stylesheet" href="/public/css/styles.css"> --}}
     <link rel="stylesheet" href="/public/images/mbgcopy.png">
     <title>QuizzME</title>
     {{> includes}}
@@ -14,78 +16,149 @@
     <header>
         {{> nav}}
     </header>
-    <main class="timer-container">
-        <section id="knowledge-sec">
-            <lightning-card icon-name="standard:account" variant="base">
-                <div slot="title">
-                    <h2>Generate Questions</h2>
-                    <p>
-                        <center>Test your knowledge with our quizzes</center>
-                    </p>
-                </div>
-                <div slot="actions">
-                    <p>
-                        {{!-- {{generateRandomQuestions()}} --}}
-                    </p>
-                </div>
-                <div slot="footer">
 
-                </div>
-                <div>
-                    <!-- Card Body  -->
-
-                </div>
-            </lightning-card>
-            <br>
-        </section>
-
-        <div class="bg-image"></div>
-
-        <section class="timer-sec">
-            <div>
-                <div id="timer">3:00</div>
-                <button id="startQuiz">Start Quiz</button>
+    <main>
+        {{!-- <div class="main-container">
+            <div class="user-info" id="user-info">
+                <h2>User Information</h2>
+                <p>Name: John Doe</p>
+                <p>Email: john.doe@example.com</p>
             </div>
+            <div class="ad-container" id="ad-container">
+                <img src="ad-image.jpg" alt="Ad Image" class="ad-image">
+                <div class="ad-text">This is an amazing product!</div>
+                <button class="close-btn" id="close-btn">Close</button>
 
-        </section>
-        <section><br>
-            <button id="btn-subscribe">Subscribe</button>
-        </section>
+            </div> --}}
+            <div class="main-container">
+                <div id="component-1" class="component" class="component">
+                    <h2>Component 1</h2>
+                    <p>This is the first component.</p>
+                </div>
+                <div id="component-3" class="component" class="component">
+                    <h2>Component 3</h2>
+                    <p>This is the first component.</p>
+                    <section><br>
+                        <div>
+                            {{!-- <h3> Subscribe for free </h3> --}}
+                            <button id="btn-subscribe">Subscribe</button>
+                        </div>
+                    </section>
+                </div>
+                <div id="component-2" class="component" class="component">
+                    <h2>Component 2</h2>
+                    <p>This is the second component.</p>
+                    <section class="timer-sec">
+                        <div id="quizTextArea">
+                            <input type="text-area" class="quizTextArea">
+                            <button id="gen-quistions">Generate</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
     </main>
+    </div>
+    <main>
+
+    </main>
+
+    <script>
+        let timer;
+        let timeLeft = 10 * 60; // 10 minutes in seconds
+        const timerDisplay = document.getElementById('timer');
+        const startButton = document.getElementById('startQuiz');
+        const quizTextArea = document.getElementById('quizTextArea');
+        const btnSubscribe = document.getElementById('btnSubscribe');
+
+        function startQuiz() {
+            clearInterval(timer); // Clear any existing timer
+            timeLeft = 10 * 60; // Reset time left
+            updateTimerDisplay(timeLeft);
+            generateQuizQuestions(); // Initial generation of questions
+
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay(timeLeft);
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert("Time's up! The quiz session has ended.");
+                    resetTimer();
+                    quizTextArea.value = ''; // Clear quiz questions on timer expiry
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            timerDisplay.innerText = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function resetTimer() {
+            timeLeft = 10 * 60;
+            updateTimerDisplay(timeLeft);
+        }
+
+        function generateQuizQuestions() {
+            quizTextArea.value = ''; // Clear previous questions
+            const numQuestions = 5; // Number of questions to generate
+            for (let i = 0; i < numQuestions; i++) {
+                const num1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+                const num2 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+                const operator = ['+', '-', '*', '/'][Math.floor(Math.random() * 4)]; // Random operator
+                let answer;
+                let question = `${num1} ${operator} ${num2} = `;
+
+                switch (operator) {
+                    case '+':
+                        answer = num1 + num2;
+                        break;
+                    case '-':
+                        answer = num1 - num2;
+                        break;
+                    case '*':
+                        answer = num1 * num2;
+                        break;
+                    case '/':
+                        answer = (num2 !== 0) ? (num1 / num2).toFixed(2) : 'undefined'; // Avoid division by zero
+                        break;
+                }
+
+                quizTextArea.value += `${question}${answer}\n`;
+            }
+        }
+        startButton.addEventListener('click', startQuiz);
+        btnSubscribe.addEventListener('click', subscribe);
+
+        function createAd() {
+            const adContainer = document.getElementById('ad-container');
+            const adImage = document.createElement('img');
+            adImage.src = 'ad-image.jpg';
+            adImage.alt = 'Ad Image';
+            adImage.classList.add('ad-image');
+
+            const adText = document.createElement('div');
+            adText.classList.add('ad-text');
+            adText.innerText = 'This is an amazing product!';
+
+            const closeBtn = document.createElement('button');
+            closeBtn.classList.add('close-btn');
+            closeBtn.innerText = 'Close';
+            closeBtn.addEventListener('click', () => {
+                adContainer.style.display = 'none';
+            });
+
+            adContainer.appendChild(adImage);
+            adContainer.appendChild(adText);
+            adContainer.appendChild(closeBtn);
+        }
+
+    </script>
+
     <footer>
         <p>© 2024 QuizzME</p>
     </footer>
-
-
-    <script src="/quiz.hbs">
-
-    </script>
-
-    <script>
-        document.getElementById('btn-subscribe').addEventListener('click', function (event) {
-            event.preventDefault();
-            window.location = '/price'
-        });
-        document.getElementById('startQuiz').addEventListener('click', function (event) {
-            event.preventDefault();
-            event.target.textContent = 'Generating Questions...';
-            event.generateRandomQuestions();
-
-        });
-        function generateRandomQuestions() {
-            // Logic to generate random math questions
-            const questions = [];
-            for (let i = 0; i < 10; i++) {
-                const num1 = Math.floor(Math.random() * 100);
-                const num2 = Math.floor(Math.random() * 100);
-                questions.push({
-                    question: `What is ${num1} + ${num2}?`,
-                    answer: num1 + num2,
-                });
-            }
-            return questions;
-        }
-    </script>
 </body>
 
 </html>

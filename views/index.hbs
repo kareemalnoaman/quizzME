@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!--
+    <link rel="stylesheet" href="/public/css/ad.css"> --}}
     <title>Home</title>
     {{> includes}}
 </head>
@@ -12,16 +14,36 @@
     <header>
         {{> nav}}
     </header>
-    <div class="bg-image"></div>
-    <main class="main">
-
-        <div>
-            <h1 style="color:rgb(233, 233, 239);">Home</h1>
-
-        </div>
-
+    <main id="home-container">
+        <section>
+            <h2>Welcome to the Math Quiz App! </h2>
+            <p>Test your math skills and improve your problem-solving abilities.</p>
+            <button onclick="startQuiz()" id="start-quiz">Quiz Yourself</button>
+        </section>
     </main>
+    {{!-- <div class="main-container">
+        <div id="component-1" class="component" class="component">
+            <h2>Component 1</h2>
+            <p>This is the first component.</p>
+        </div>
+        <div id="component-2" class="component" class="component">
+            <h2>Component 2</h2>
+            <p>This is the second component.</p>
+        </div>
+    </div> --}}
 
+    {{!--
+    <script src="script.js"></script> --}}
+    <script>
+        function startQuiz() {
+            // Redirect to the quiz page or start the quiz
+            window.location.href = 'quizzme';
+        }
+        function subscribe() {
+            // Subscribe the user
+            alert('You have subscribed successfully!');
+        }
+    </script>
     <footer>
         <p>© 2024 QuizzME</p>
     </footer>

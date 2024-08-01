@@ -59,6 +59,14 @@ app.get(['/help'], (req, res, next) => {
     }
 })
 
+app.get(['/price'], (req, res, next) => {
+    if (!req.user) {
+        res.redirect('/login')
+    } else {
+        next()
+    }
+})
+
 app.get('/', async (req, res) => {
     res.render('index', {
         user: req.user
@@ -96,8 +104,8 @@ app.get('/quizzme', (req, res) => {
     })
 })
 
-app.get('/pricing', (req, res) => {
-    res.render('pricing', {
+app.get('/price', (req, res) => {
+    res.render('price', {
         user: req.user
     })
 })
