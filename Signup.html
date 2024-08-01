@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/quizzme.html"><b>QuizzME</b></li>
+                <li><a href="/index.html"><b>Home</b></li>
+                <li><a href="/about.html"><b>About</b></a></li>
+                <li><a href="/help.html"><b>Help</b></a></li>
+                <div class="float-right">
+                    <li><a href="/login.html"><b>Login</b></a></li>
+                    <li id="btn-register"><a href="/signup.html"><b>Register</b></a></li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <div class="bg-image"></div>
+    <!-- <h2>Register</h2> -->
+    <main class="main-panel">
+        <section id="contact" class="contact">
+            <div class="container">
+                <form id="signupForm" action="/signup.html" method="post">
+                    <div id="inputs">
+                        <h1>Register</h1>
+                        <input type="text" name="userName" placeholder="email" required>
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                        <button id="btn-signup" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+    <script src="/js/signup.js"></script>
+</body>
+
+</html>

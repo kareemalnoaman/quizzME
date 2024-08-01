@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/quizzme.html"><b>QuizzME</b></li>
+            <li><a href="/index.html"><b>Home</b></li>
+            <li><a href="/about.html"><b>About</b></a></li>
+            <li><a href="/help.html"><b>Help</b></a></li>
+            <div class="float-right">
+                <li><a href="/login.html"><b>Login</b></a></li>
+                <li id="btn-register"><a href="/signup.html"><b>Register</b></a></li>
+            </div>
+        </ul>
+    </nav>
+    </header>
+    <div class="bg-image"></div>
+    <!-- <h2>Login</h2> -->
+    <main class="main-panel">
+        <section id="contact" class="contact">
+            <div class="container">
+                <h1>Login</h1>
+                <form id="loginForm" action="/login.html" method="post">
+                    <label for="userName">Username:</label>
+                    <input type="text" id="userName" name="userName" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <div>
+                        <button id="btn-login" type="submit">Login</button><br>
+                    </div>
+                    <div>
+                        <center>No account <a href="/signup.html">register</a></center>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Change color of link
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById('#btn-login');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                const formData = {
+                    username: document.getElementById('username').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                };
+
+                console.log(formData); // For demonstration, replace with actual submission logic
+
+                // Optional: Send formData to a server
+                // fetch('/register', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify(formData),
+                // })
+                // .then(response => response.json())
+                // .then(data => console.log(data))
+                // .catch((error) => {
+                //     console.error('Error:', error);
+                // });
+            });
+        });
+    </script>
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+</body>
+
+</html>
