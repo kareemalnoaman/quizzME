@@ -36,6 +36,7 @@ main .column {
 
 /* Create two equal columns that floats next to each other */
 .column-left {
+    place-items: center;
     text-align: justify;
     color: aliceblue;
     float: left;
@@ -47,7 +48,8 @@ main .column {
 }
 
 .column-right {
-    text-align: justify;
+    text-align:justify;
+    place-items: center;
     float: right;
     display: flex;
     width: 400px;

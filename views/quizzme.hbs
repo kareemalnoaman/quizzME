@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{!--
     <link rel="stylesheet" href="/public/css/styles.css"> --}}
-    <link rel="stylesheet" href="/public/images/mbgcopy.png">
+    <!--<link rel="stylesheet" href="/images/mbgcopy.png"> -->
     <title>QuizzME</title>
     {{> includes}}
+    <style>
+        #timer-div {
+            coloe: white;
+            font-size: 22px;
+            margin-top: 20px;
+        }
 
+        #timer-counter {
+            display: inline;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,58 +28,60 @@
     </header>
 
     <main>
-        {{!-- <div class="main-container">
-            <div class="user-info" id="user-info">
-                <h2>User Information</h2>
-                <p>Name: John Doe</p>
-                <p>Email: john.doe@example.com</p>
+        <div class="quiz-main-container">
+            <div id="component-3" class="component">
+                {{!-- <p>Component 1</p>
+                <p>This is the third component.</p> --}}
+                <section><br>
+                    <div>
+                        <h3> Subscribe for free </h3>
+                        <button id="btn-subscribe">Subscribe</button>
+                    </div>
+                </section>
             </div>
-            <div class="ad-container" id="ad-container">
-                <img src="ad-image.jpg" alt="Ad Image" class="ad-image">
-                <div class="ad-text">This is an amazing product!</div>
-                <button class="close-btn" id="close-btn">Close</button>
-
-            </div> --}}
-            <div class="main-container">
-                <div id="component-1" class="component" class="component">
-                    <h2>Component 1</h2>
-                    <p>This is the first component.</p>
-                </div>
-                <div id="component-3" class="component" class="component">
-                    <h2>Component 3</h2>
-                    <p>This is the first component.</p>
-                    <section><br>
-                        <div>
-                            {{!-- <h3> Subscribe for free </h3> --}}
-                            <button id="btn-subscribe">Subscribe</button>
-                        </div>
-                    </section>
-                </div>
-                <div id="component-2" class="component" class="component">
-                    <h2>Component 2</h2>
-                    <p>This is the second component.</p>
-                    <section class="timer-sec">
-                        <div id="quizTextArea">
-                            <input type="text-area" class="quizTextArea">
-                            <button id="gen-quistions">Generate</button>
-                        </div>
-                    </section>
-                </div>
+            <div id="component-2" class="component">
+                {{!-- <p>Component 2</p> --}}
+                <p>Start Generate Math Questions:</p>
+                <section class="timer-sec">
+                    <div id="quizTextArea">
+                        <input type="text-area" id="question-area" style="font-size:large" readonly>
+                        {{!-- <textarea id="math-text-area" name="text-area" rows="4" cols="50"> --}}
+                        <button id="generate-question">Generate</button>
+                    </div>
+                </section>
+                 <section class="timer-sec">
+                    <div id="quizTextArea">
+                        <input type="text-area" id="answer-area" style="font-size:large">
+                        {{!-- <textarea id="math-text-area" name="text-area" rows="4" cols="50"> --}}
+                        <button id="answer-question">Submit Answer </button>
+                        
+                    </div>
+                    <div id="timer-div">Timer: <p id="timer-counter">03:00</p>
+                    <p id="ans-response"></p>
+                    </div>
+                </section>
             </div>
+        </div>
     </main>
     </div>
-    <main>
 
-    </main>
 
     <script>
-        let timer;
-        let timeLeft = 10 * 60; // 10 minutes in seconds
-        const timerDisplay = document.getElementById('timer');
+        const timerDisplay = document.getElementById('timer-counter');
         const startButton = document.getElementById('startQuiz');
-        const quizTextArea = document.getElementById('quizTextArea');
-        const btnSubscribe = document.getElementById('btnSubscribe');
+        const question = document.getElementById('question-area');
+        const answer = document.getElementById('answer-area');
+        const submitAnswer = document.getElementById('answer-question');
+        const generate = document.getElementById('generate-question')
+        const response = document.getElementById('ans-response')
+        let running = false
+        const btnSubscribe = document.getElementById('btn-subscribe');
 
+        btnSubscribe.addEventListener('click', (e) => {
+            window.location.href = '/price'; // Replace 'login.html' with the URL of your login page
+        });
+
+        /*
         function startQuiz() {
             clearInterval(timer); // Clear any existing timer
             timeLeft = 10 * 60; // Reset time left
@@ -129,8 +141,103 @@
             }
         }
         startButton.addEventListener('click', startQuiz);
-        btnSubscribe.addEventListener('click', subscribe);
+*/
 
+        function randNum(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        function generateQuestion() {
+            const ops = ['-', '+', '/', '*']
+            let question
+
+            let numberOfFields = randNum(1, 6)
+            question = '' + randNum(1, 100)
+            for (let j = 0; j < numberOfFields; j++) {
+                question += ops[randNum(0, ops.length - 1)]
+                question += randNum(1, 100)
+            }
+            return question
+        }
+        function startTimer(duration) {
+            var timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                timerDisplay.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    endTrail()
+                    clearInterval(interval)
+                }
+
+            }, 1000);
+        }
+        function getCookie(name) {
+            let value = `; ${document.cookie}`;
+            let parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        function endTrail() {
+            question.disabled = true
+            answer.disabled = true
+            generate.disabled = true
+            submitAnswer.disabled = true
+            running = false
+            response.innerText = `You have completed the trail.
+            Please sign up`
+            response.style.color = 'white'
+            timerDisplay.textContent = '03:00'
+        }
+        const session = getCookie('activeTrail')
+        if (session === 'completed') {
+            endTrail()
+        } else if (session === 'inprogress') {
+            const time = getCookie('starttime')
+            const currentTime = Date.now()
+            const timeElapsed = Math.floor((currentTime - time) / 1000)
+            const timeLeft = 60 * 3 - timeElapsed
+            if (timeLeft > 0) {
+                startTimer(timeLeft)
+                running = true
+            } else {
+                endTrail()
+            }
+        }
+        generate.addEventListener('click', (e) => {
+
+            if (!getCookie('activeTrail')) {
+                document.cookie = 'activeTrail=inprogress;'
+                document.cookie = `starttime=${Date.now()};`
+            }
+            if (!running) {
+                const threeMinutes = 60 * 3
+                startTimer(threeMinutes)
+                running = true
+            }
+            answer.value = ''
+            response.innerText = ''
+            question.value = generateQuestion()
+        })
+        submitAnswer.addEventListener('click', (e) => {
+
+            const q = parseInt(eval(question.value)).toFixed(2)
+            const a = parseInt(answer.value).toFixed(2)
+            if (isNaN(q) || isNaN(a)) {
+                response.innerText = 'Invalid answer'
+                response.style.color = 'red'
+            } else if (q === a) {
+                response.innerText = 'Correct'
+                response.style.color = 'green'
+            } else {
+                response.innerText = 'Incorrect'
+                response.style.color = 'red'
+            }
+        })
         function createAd() {
             const adContainer = document.getElementById('ad-container');
             const adImage = document.createElement('img');

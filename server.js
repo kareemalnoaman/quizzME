@@ -58,13 +58,22 @@ app.get(['/help'], (req, res, next) => {
         next()
     }
 })
-
-app.get(['/price'], (req, res, next) => {
-    if (!req.user) {
-        res.redirect('/login')
+app.get(['/login/:type?', '/signup/:type?'], (req, res, next) => {
+    if (req.user) {
+        if (req.params.type === 'paid') {
+            res.redirect('/payment')
+        } else {
+            res.redirect('/')
+        }
     } else {
         next()
     }
+})
+
+app.get('/price', (req, res) => {
+    res.render('price', {
+        user: req.user
+    })
 })
 
 app.get('/', async (req, res) => {
@@ -74,15 +83,17 @@ app.get('/', async (req, res) => {
 
 })
 
-app.get('/login', (req, res) => {
+app.get('/login/:type?', (req, res) => {
     res.render('login', {
-        user: req.user
+        user: req.user,
+        type: req.params?.type
     })
 })
 
-app.get('/signup', (req, res) => {
+app.get('/signup/:type?', (req, res) => {
     res.render('signup', {
-        user: req.user
+        user: req.user,
+        type: req.params?.type
     })
 })
 
@@ -106,6 +117,12 @@ app.get('/quizzme', (req, res) => {
 
 app.get('/price', (req, res) => {
     res.render('price', {
+        user: req.user
+    })
+})
+
+app.get('/payment', (req, res) => {
+    res.render('payment', {
         user: req.user
     })
 })

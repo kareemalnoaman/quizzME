@@ -4,12 +4,14 @@
 
 
 #price-container {
+    margin-top: 10%;
+    margin-left: 30%;
     background-color: #100f0f;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 20px;
+    
 }
 
 .columns {
@@ -66,11 +68,9 @@ h2 {
 
 .details .text-color {
     color: azure;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
 }
-
 
 .price .grey {
     background-color: #94b6e9;
@@ -79,7 +79,10 @@ h2 {
 
 
 .button {
-    background-color: #EABB72;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: #eb9814;
+    margin-left: 20px;
     border: none;
     color: white;
     padding: 10px 25px;

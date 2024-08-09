@@ -14,21 +14,20 @@
     </header>
     <div class="bg-image"></div>
     <!-- <h2>Error</h2> -->
-    <main class="main-panel">
-        <section id="contact" class="contact">
-            <div class="container">
-                <h1>Contact Us</h1>
-                <form id="contactForm">
+    <main>
+        <section class="help-main-panel">
+            <div id="contact">
+                <h1 id="header-1">Contact Us</h1>
+                <form id="contactInput">
                     <label for="subject">Subject:</label>
-                    <input type="text" id="subject" name="subject" required>
+                    <input type="text" id="subject" name="subject" style="font-size:large" required>
                     <label for="message">Message:</label>
-                    <textarea id="message" name="message" style="height: 60px;"></textarea>
+                    <textarea id="message" name="message" style="height: 60px" "font-size:large"></textarea>
 
                     <button id="btn-help">Submit</button>
                 </form>
                 <div id="response" style="color: rgb(0, 0, 0);"></div>
             </div>
-
         </section><!-- End Contact Section -->
     </main>
     <script src="/js/help.js"></script>

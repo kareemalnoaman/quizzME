@@ -1,0 +1,32 @@
+
+
+body {
+    /* margin: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #72a0ea; */
+}
+.payment-container {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* height: 100vh; */
+}
+.left-component {
+    /* margin-left: 100px;
+    margin-top: 100px;
+    float: left;
+    width: 300px;
+    height: 500px;
+    display: flex;
+    background-color: #a1b8dc; */
+}
+.right-component {
+    /* margin-left: 100px;
+    margin-top: 100px;
+    float: right;
+    color: white;
+    width: 300px;
+    height: 500px;
+    background-color: #031a41; */
+}
