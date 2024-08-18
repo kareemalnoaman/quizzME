@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    {{> includes}}
+</head>
+
+<body>
+    <header>
+        {{> nav}}
+    </header>
+    <div class="bg-image"></div>
+    <!-- <h2>Register</h2> -->
+    <main class="main-panel">
+        <section id="signup-form" class="contact">
+            <div class="container">
+                <form id="signupForm">
+                    <div id="inputs">
+                        <h1>Register</h1>
+                        <input type="text" id="firstName" name="firstName" placeholder="firstName" required>
+                        <input type="text" id="lastName" name="lastName" placeholder="lastName" required>
+                        <input type="text" id="email" name="email" placeholder="email" required>
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        <input type="password" id="confirmPassword" name="confirmPassword"
+                            placeholder="Confirm Password" required>
+                        <button id="btn-signup">Register</button>
+                    </div>
+                    <div style="text-align: center;">
+                        <p id="response_message"></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+    <script>
+        const type = '{{#if type}}{{type}}{{/if}}'
+        document.getElementById('btn-signup').addEventListener('click', function (event) {
+            event.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const responseMessage = document.getElementById('response_message');
+            const params = new URLSearchParams()
+            params.append('firstName', firstName)
+            params.append('lastName', lastName)
+            params.append('email', email)
+            params.append('password', password)
+
+            if (password !== confirmPassword) {
+                responseMessage.innerHTML = 'Passwords do not match';
+            } else {
+                axios.post('/signup', params).then(function (res) {
+                    if (type === 'paid') {
+                        window.location = '/payment'
+                    } else {
+                        window.location = '/';
+                    }
+                }).catch(function (err) {
+                    responseMessage.innerHTML = err.response?.data
+                    console.log(err);
+
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<nav class="navbar">
+    <ul>
+        <li><a href="/"><b>Home</b></li>
+        <li><a href="/quizzme"><b>Game</b></li>
+        <li><a href="/about"><b>About</b></a></li>
+        {{#if user}}<li><a href="/help"><b>Help</b></a></li>{{/if}}
+        <div class="float-right">
+            {{#if user}}
+            <li style="color: white;"><b>{{user.firstName}} {{user.lastName}}</b></li>
+            <li id="btn-register"><a href="#" style="font-size: 12px; color:lightblue;" id="logout"><b>logout</b></a>
+            </li>
+            {{#if user.subscribed}}
+            <li style="color: rgb(92, 204, 31);font-size: 10px;margin-top: 5px;">**Subscribed**</li>
+            {{/if}}
+            {{else}}
+            <li><a href="/login"><b>Login</b></a></li>
+            <li id="btn-register"><a href="/signup"><b>Register</b></a></li>
+
+            {{/if}}
+        </div>
+    </ul>
+    <script>
+        const logout = document.getElementById('logout');
+        if (logout) {
+            logout.addEventListener('click', function (event) {
+                event.preventDefault();
+                axios.post('/logout').then(function (response) {
+                    window.location = '/login';
+                }).catch(function (err) {
+                    console.log(err);
+                });
+            });
+        }
+    </script>
+</nav>

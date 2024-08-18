@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!--
+    <link rel="stylesheet" href="/public/css/styles.css"> --}}
+    <!--<link rel="stylesheet" href="/images/mbgcopy.png"> -->
+    <title>QuizzME</title>
+    {{> includes}}
+    <style>
+        #timer-div,
+        #questions-div {
+            coloe: white;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+
+        #timer-counter {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        {{> nav}}
+    </header>
+
+    <main>
+        <div class="quiz-main-container">
+            <div id="component-3" class="component">
+                {{!-- <p>Component 1</p>
+                <p>This is the third component.</p> --}}
+                <section><br>
+                    <div>
+                        <h3> Subscribe for free </h3>
+                        <button id="btn-subscribe">Subscribe</button>
+                    </div>
+                </section>
+            </div>
+            <div id="component-2" class="component">
+                {{!-- <p>Component 2</p> --}}
+                <p>Start Generate Math Questions:</p>
+                <section class="timer-sec">
+                    <div id="quizTextArea">
+                        <input type="text-area" id="question-area" style="font-size:large" readonly>
+                        {{!-- <textarea id="math-text-area" name="text-area" rows="4" cols="50"> --}}
+                        <button id="generate-question">Generate</button>
+                    </div>
+                </section>
+                 <section class="timer-sec">
+                    <div id="quizTextArea">
+                        <input type="text-area" id="answer-area" style="font-size:large">
+                        {{!-- <textarea id="math-text-area" name="text-area" rows="4" cols="50"> --}}
+                        <button id="answer-question">Submit Answer </button>
+                        
+                    </div>
+                    <div id="timer-div" style="display: none;">Timer: <p id="timer-counter">10:00</p>
+                    </div>
+                    <div id="questions-div" style="display:none">Questions: 50/<span id="qusetions-counter">0</span>
+                    </div>
+                    <p id="ans-response"></p>
+                </section>
+            </div>
+        </div>
+    </main>
+    </div>
+
+
+    <script>
+        const timerDisplay = document.getElementById('timer-counter');
+        const timerDiv = document.getElementById('timer-div');
+        const questionsDiv = document.getElementById('questions-div');
+        const questionsCounter = document.getElementById('qusetions-counter');
+        const startButton = document.getElementById('startQuiz');
+        const question = document.getElementById('question-area');
+        const answer = document.getElementById('answer-area');
+        const submitAnswer = document.getElementById('answer-question');
+        const generate = document.getElementById('generate-question')
+        const response = document.getElementById('ans-response')
+        let running = false
+        const btnSubscribe = document.getElementById('btn-subscribe');
+        const user = `{{user.id}}`
+        const subscribed = `{{user.subscribed}}`
+
+
+        btnSubscribe.addEventListener('click', (e) => {
+            window.location.href = '/price'; // Replace 'login.html' with the URL of your login page
+        });
+
+        /*
+        function startQuiz() {
+            clearInterval(timer); // Clear any existing timer
+            timeLeft = 10 * 60; // Reset time left
+            updateTimerDisplay(timeLeft);
+            generateQuizQuestions(); // Initial generation of questions
+
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay(timeLeft);
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert("Time's up! The quiz session has ended.");
+                    resetTimer();
+                    quizTextArea.value = ''; // Clear quiz questions on timer expiry
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            timerDisplay.innerText = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function resetTimer() {
+            timeLeft = 10 * 60;
+            updateTimerDisplay(timeLeft);
+        }
+
+        function generateQuizQuestions() {
+            quizTextArea.value = ''; // Clear previous questions
+            const numQuestions = 5; // Number of questions to generate
+            for (let i = 0; i < numQuestions; i++) {
+                const num1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+                const num2 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+                const operator = ['+', '-', '*', '/'][Math.floor(Math.random() * 4)]; // Random operator
+                let answer;
+                let question = `${num1} ${operator} ${num2} = `;
+
+                switch (operator) {
+                    case '+':
+                        answer = num1 + num2;
+                        break;
+                    case '-':
+                        answer = num1 - num2;
+                        break;
+                    case '*':
+                        answer = num1 * num2;
+                        break;
+                    case '/':
+                        answer = (num2 !== 0) ? (num1 / num2).toFixed(2) : 'undefined'; // Avoid division by zero
+                        break;
+                }
+
+                quizTextArea.value += `${question}${answer}\n`;
+            }
+        }
+        startButton.addEventListener('click', startQuiz);
+*/
+
+        if (user) {
+            if (subscribed === 'false') {
+                timerDiv.style.display = 'none';
+                questionsDiv.style.display = 'block';
+            }
+        } else {
+            timerDiv.style.display = 'block';
+            questionsDiv.style.display = 'none';
+        }
+        function randNum(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        function generateQuestion() {
+            const ops = ['-', '+', '/', '*']
+            let question
+
+            let numberOfFields = randNum(1, 6)
+            question = '' + randNum(1, 100)
+            for (let j = 0; j < numberOfFields; j++) {
+                question += ops[randNum(0, ops.length - 1)]
+                question += randNum(1, 100)
+            }
+            return question
+        }
+        function startTimer(duration) {
+            var timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                timerDisplay.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    endTrail()
+                    clearInterval(interval)
+                }
+
+            }, 1000);
+        }
+        function getCookie(name) {
+            let value = `; ${document.cookie}`;
+            let parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        function endTrail() {
+            question.disabled = true
+            answer.disabled = true
+            generate.disabled = true
+            submitAnswer.disabled = true
+            running = false
+            response.innerText = `You have completed the trail.
+            Please sign up`
+            response.style.color = 'white'
+            timerDisplay.textContent = '00:00'
+        }
+        if (!user) {
+            const session = getCookie('activeTrail')
+            if (session === 'completed') {
+                endTrail()
+            } else if (session === 'inprogress') {
+                const time = getCookie('starttime')
+                const currentTime = Date.now()
+                const timeElapsed = Math.floor((currentTime - time) / 1000)
+                const timeLeft = 60 * 10 - timeElapsed
+                if (timeLeft > 0) {
+                    startTimer(timeLeft)
+                    running = true
+                } else {
+                    endTrail()
+                }
+            }
+        }
+
+        let q_counter = parseInt(getCookie('questions_counter') || 0)
+
+        questionsCounter.innerText = q_counter
+        generate.addEventListener('click', (e) => {
+
+            if (!getCookie('activeTrail') && !user) {
+                document.cookie = 'activeTrail=inprogress;'
+                document.cookie = `starttime=${Date.now()};`
+            }
+            if (!running && !user) {
+                const tenMinutes = 60 * 10
+                startTimer(tenMinutes)
+                running = true
+            }
+            if (user && subscribed === 'false') {
+
+                if (q_counter === 50) {
+                    endTrail()
+                    return
+                }
+                document.cookie = `questions_counter=${++q_counter};`
+            }
+            questionsCounter.innerText = q_counter
+
+            answer.value = ''
+            response.innerText = ''
+            question.value = generateQuestion()
+        })
+        submitAnswer.addEventListener('click', (e) => {
+
+            const q = parseInt(eval(question.value)).toFixed(2)
+            const a = parseInt(answer.value).toFixed(2)
+            if (isNaN(q) || isNaN(a)) {
+                response.innerText = 'Invalid answer'
+                response.style.color = 'red'
+            } else if (q === a) {
+                response.innerText = 'Correct'
+                response.style.color = 'green'
+            } else {
+                response.innerText = 'Incorrect'
+                response.style.color = 'red'
+            }
+        })
+        function createAd() {
+            const adContainer = document.getElementById('ad-container');
+            const adImage = document.createElement('img');
+            adImage.src = 'ad-image.jpg';
+            adImage.alt = 'Ad Image';
+            adImage.classList.add('ad-image');
+
+            const adText = document.createElement('div');
+            adText.classList.add('ad-text');
+            adText.innerText = 'This is an amazing product!';
+
+            const closeBtn = document.createElement('button');
+            closeBtn.classList.add('close-btn');
+            closeBtn.innerText = 'Close';
+            closeBtn.addEventListener('click', () => {
+                adContainer.style.display = 'none';
+            });
+
+            adContainer.appendChild(adImage);
+            adContainer.appendChild(adText);
+            adContainer.appendChild(closeBtn);
+        }
+
+    </script>
+
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+</body>
+
+</html>

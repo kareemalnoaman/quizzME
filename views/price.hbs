@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/price.css">
+    <title>Pricing</title>
+    {{> includes}}
+</head>
+
+<body>
+    <header>
+        {{> nav}}
+    </header>
+    <div class="container">
+        <main id="price-container">
+            <div class="columns">
+                <ul class="price">
+                    <li class="header">Free</li>
+                    <li class="grey">$ 0.00 / year</li>
+                    <div class="details">
+                        <li class="text-color">5GB Storage</li>
+                        <li class="text-color">Limited Questions</li>
+                        <li class="text-color">1GB Bandwidth</li>
+                    </div>
+                    <li class="grey" id="free-option"><a href="#" class="button">Sign Up</a></li>
+                </ul>
+            </div>
+
+            <div class="columns">
+                <ul class="price">
+                    <li class="header" style="background-color:#0766ea">Pro</li>
+                    <li class="grey">$ 9.99 / year</li>
+                    <div class="details">
+                        <li class="text-color">25GB Storage</li>
+                        <li class="text-color">Unlimited Questions</li>
+                        <li class="text-color">5GB Bandwidth</li>
+                    </div>
+                    <li class="grey" id="paid-option"><a href="#" class="button">Sign Up</a></li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+    <script>
+        document.getElementById('free-option').addEventListener('click', function () {
+            window.location.href = 'login'; // Replace 'login.html' with the URL of your login page
+        });
+        document.getElementById('paid-option').addEventListener('click', function () {
+            window.location.href = 'login/paid'; // Replace 'login.html' with the URL of your login page
+        });
+    </script>
+</body>
+
+</html>

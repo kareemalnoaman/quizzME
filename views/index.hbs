@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {{> includes}}
+</head>
+
+<body>
+    <header>
+        {{> nav}}
+    </header>
+    <main class="main">
+        <div class="home-container"></div>
+        <div class="container">
+            <section id="home-container-1">
+                <div class="header-1">
+                    <h4>Welcome to QuizzME</h4>
+                    <div>
+                        <img src="/public/images/bg-math4.jpg" alt="">
+                    </div>
+                    <p>Test your knowledge with our math quizzes</p>
+                    <button onclick="startQuiz()" id="start-quiz">Quiz Yourself</button>
+            </section>
+            {{#unless user}}
+            <section id="home-container-2">
+                <div class="header-3">
+                    <div>
+                        <sp-card heading="Card Heading" subheading="JPG Photo">
+                            <img slot="cover-photo" src="https://picsum.photos/200/300" alt="Demo Image" /><br>
+                            <br>
+                        </sp-card>
+                        <button onclick="shop()" id="ad-click-btn"> <a href="https://www.amazon.com"
+                                target="_blank"></a>SHOP</button>
+                    </div>
+                    <div slot="footer" id="ad-footer">Excellent products</div>
+                </div>
+            </section>
+        </div>
+        {{/unless}}
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+    {{!-- <main id="content">
+        <div id="ad-container"></div>
+        <!-- Other content goes here -->
+    </main> --}}
+
+    {{!-- <div class="main-container">
+        <div id="component-1" class="component" class="component">
+            <h2>Component 1</h2>
+            <p>This is the first component.</p>
+        </div>
+        <div id="component-2" class="component" class="component">
+            <h2>Component 2</h2>
+            <p>This is the second component.</p>
+        </div>
+    </div> --}}
+
+    {{!--
+    <script src="script.js"></script> --}}
+    <script>
+        function startQuiz() {
+            window.location.href = "/quizzme";
+        }
+    </script>
+    <script>
+        // const adContainer = document.getElementById('ad-container');
+        // const ad = document.createElement('div');
+        // ad.innerHTML = 'Ad here';
+        // adContainer.appendChild(ad);
+        function shop() {
+            window.location.href = "/shop";
+        }
+    </script>
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+</body>
+
+</html>

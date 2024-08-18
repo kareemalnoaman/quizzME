@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    {{> includes}}
+</head>
+
+<body>
+    <header>
+        {{> nav}}
+    </header>
+    <div class="bg-image"></div>
+    <!-- <h2>Login</h2> -->
+    <main class="main-panel">
+        <section id="login-form" class="contact">
+            <div class="container">
+                <form id="loginForm">
+                    <h1>Login</h1>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <div>
+                        <button id="btn-login">Login</button><br>
+                    </div>
+                    <div>
+                        <center>No account <a href="/signup{{#if type}}/{{type}}{{/if}}">register</a></center>
+                    </div>
+                    <div style="text-align: center;">
+                        <p id="response_message"></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 QuizzME</p>
+        <script>
+            const type = '{{#if type}}{{type}}{{/if}}'
+            document.getElementById('btn-login').addEventListener('click', function (event) {
+                event.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const responseMessage = document.getElementById('response_message');
+                const params = new URLSearchParams()
+                params.append('email', email)
+                params.append('password', password)
+                axios.post('/login', params).then(function (res) {
+                    if (type === 'paid') {
+                        window.location = '/payment'
+                        return
+                    } else {
+                        window.location = '/'
+                    }
+
+                }).catch(function (err) {
+                    responseMessage.innerHTML = err.response?.data
+                    console.log(err);
+                });
+            });
+        </script>
+    </footer>
+</body>
+
+</html>

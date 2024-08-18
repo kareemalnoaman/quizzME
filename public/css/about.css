@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #366281;
+    background-size: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+.bg-image {
+    background-image: url('../images/mathBG.jpg');
+}
+
+main .column {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading-3 {
+    color: aliceblue;
+    font-size: 1.9rem;
+    text-shadow: #111201 3px 3px 3px;
+    margin-top: 50px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column-left {
+    place-items: center;
+    text-align: justify;
+    color: aliceblue;
+    float: left;
+    display: flex;
+    width: 200px;
+    padding: 10px;
+    height: 400px;
+    /* Should be removed. Only for demonstration */
+}
+
+.column-right {
+    text-align:justify;
+    place-items: center;
+    float: right;
+    display: flex;
+    width: 400px;
+    padding: 10px;
+    height: 400px;
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

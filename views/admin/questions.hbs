@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    {{> includes}}
+</head>
+
+<body>
+    <header>
+        {{> nav}}
+    </header>
+    <div class="bg-image"></div>
+    <!-- <h2>Error</h2> -->
+    <main class="main-panel">
+        <section id="contact" class="contact">
+            <div class="container" style="overflow: auto;">
+                <h1><button id="btn-add-question">Add question</button></h1>
+                <div id="inputs">
+
+                    <div id="response" style="color: rgb(0, 0, 0);"></div>
+                </div>
+
+        </section><!-- End Contact Section -->
+    </main>
+    <script src="/js/help.js"></script>
+    <footer>
+        <p>© 2024 QuizzME</p>
+    </footer>
+    <script>
+        const btnAddQuestion = document.getElementById('btn-add-question')
+        const inputs = document.getElementById('inputs')
+        let questionId = 0
+        btnAddQuestion.onclick = () => {
+            const q_id = ++questionId
+            const category = document.createElement('input')
+            category.placeholder = 'Category'
+            category.id = 'category-' + q_id
+            inputs.appendChild(category)
+            const question = document.createElement('div')
+            question.className = 'question-' + q_id
+            question.id = q_id
+            inputs.appendChild(question)
+            const questionSubject = document.createElement('input')
+            questionSubject.id = q_id + '-' + 'question'
+            questionSubject.placeholder = 'Question'
+            const addOption = document.createElement('button')
+            addOption.innerHTML = 'Add Option'
+            let optionNumber = 0;
+            question.appendChild(questionSubject)
+            question.appendChild(addOption)
+
+            const submitQuestion = document.createElement('button')
+            submitQuestion.innerHTML = 'Submit Question'
+            question.appendChild(submitQuestion)
+            const answer = document.createElement('input')
+            answer.placeholder = 'Answer #'
+            question.insertBefore(answer, submitQuestion)
+            addOption.onclick = () => {
+                const option = document.createElement('input')
+                option.className = 'option-' + q_id
+                option.id = q_id + '-' + ++optionNumber
+                option.placeholder = 'Option #' + optionNumber
+                option.title = 'Option #' + optionNumber
+                question.insertBefore(option, answer)
+            }
+
+            submitQuestion.onclick = () => {
+                const categoryValue = category.value
+                const questionValue = questionSubject.value
+                const options = question.querySelectorAll('.option-' + q_id)
+                const answerValue = answer.value
+                const optionValues = []
+                options.forEach(option => {
+                    optionValues.push(option.value)
+                })
+
+                console.log(optionValues)
+
+                const params = new URLSearchParams()
+                params.append('category', categoryValue)
+                params.append('question', questionValue)
+                optionValues.forEach(option => {
+                    params.append('options', option)
+                })
+                params.append('answer', answerValue)
+
+                console.log(params.toString())
+
+                axios.post('/admin/questions/add-question', params).then(function (res) {
+                    document.getElementById('response').innerHTML = res.data
+                }).catch(function (err) {
+                    document.getElementById('response').innerHTML = err.response?.data
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>
