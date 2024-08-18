@@ -1,0 +1,462 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(4, 139, 189);
+}
+
+.quiz-main-container {
+    color: white;
+    margin-top: 100px;
+    display: flex;
+    gap: 2px;
+}
+
+#ad-start-quiz-btn {
+    width: 100px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 125px;
+    margin-left: -100px;
+    background-color: #2d1f07;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#letter-spacing {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: .5px;
+    line-height: 25px;
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0D3B66;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 5px;
+    flex: 1;
+}
+
+#component-1 {
+    text-align: center;
+    width: 500px;
+    margin-top: 20px;
+    margin-right: 15px;
+    flex: 1;
+}
+
+#component-2 {
+    align-items: center;
+    width: 500px;
+    margin-top: 20px;
+    height: 400px;
+    margin-right: 10px;
+    flex: 1;
+}
+
+
+#startquiz-container {
+    align-items: center;
+}
+
+#btn-subscribe {
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 13px;
+    margin-top: 70px;
+    position: relative;
+    margin-left: 4px;
+    background-color: #eb9814;
+    box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+
+#timer-sec {
+    background-color: #0D3B66;
+    color: white;
+    font-size: 25px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#timer {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    float: right;
+    margin-right: 80px;
+    color: white;
+}
+
+#start-quiz {
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: 0;
+    background-color: #eb9814;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#quizTextArea {
+    color: black;
+    display: inline-block;
+    width: 190px;
+    height: 30px;
+}
+
+#quizTextArea-2 {
+    color: black;
+    display: inline-block;
+    width: 190px;
+    height: 30px;
+}
+
+.timer-container {
+    width: 200px;
+    height: 600px;
+}
+
+/* Ad style */
+.container {
+    margin-top: 60px;
+    display: flex;
+    gap: 5px;
+}
+
+
+.help-main-panel {
+    display: flex;
+    color: white;
+    margin-left: 200px;
+    margin-top: 200px;
+    padding: 10px;
+    width: 500px;
+    background-color: #0D3B66;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+#header-1 {
+    align-items: center;
+}
+
+.help-main-panel #contact {
+    align-items: center;
+    width: 400px;
+}
+
+.form-style {
+    margin-left: 40px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+#message {
+    height: 400px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0D3B66;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    flex: 1;
+}
+
+.home-container {
+    gap: 10px;
+    display: grid;
+}
+
+#home-container-1 {
+    border-radius: 8px;
+    align-items: normal;
+    width: 400px;
+    height: 480px;
+    margin-top: 30px;
+    margin-left: 2%;
+    margin-right: 3%;
+    background-color: rgb(234, 244, 248);
+    display: flex;
+    font-size: 20px;
+
+}
+
+#home-container-2 .header-3 {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 480px;
+    margin-top: 30px;
+    background-color: rgb(234, 244, 248);
+    justify-content: center;
+    font-size: 20px;
+    border: 1px solid rgb(1, 1, 21);
+}
+
+#ad-footer {
+    margin-top: 15px;
+
+}
+
+#home-container-1 #start-quiz {
+    width: 150px;
+    height: 40px;
+    position: fixed;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #eb9814;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-left: 100px;
+    margin-top: 250px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.header-3 {
+    margin-top: 0px;
+    margin-left: 20px;
+    background-size: cover;
+}
+
+#ad-click-btn {
+    display: block;
+    margin: auto;
+    width: 100px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    background-color: #221806;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Bellow is the old stuff */
+#btn-login {
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #eb9814;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    position: inherit;
+    margin-left: 30%;
+    margin-top: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+.btn-register {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #eb9814;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    position: inherit;
+    margin-left: 35%;
+    margin-top: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+#btn-signup {
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #eb9814;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    position: inherit;
+    margin-top: 30px;
+    margin-left: 35%;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+#btn-help {
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #eb9814;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    position: inherit;
+    margin-top: 20px;
+    margin-left: 35%;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.timer-sec {
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    font-size: 20px;
+    width: 200px;
+}
+
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.85;
+    background-color: #72a0ea;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #0b2aaa;
+    padding: 10px;
+    z-index: 1000;
+}
+
+
+header .navbar li {
+    display: inline;
+    float: left;
+    offset-distance: 10px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.float-right {
+    float: right;
+    margin-right: 30px;
+}
+
+
+h2,
+h3,
+h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#loginForm {
+    margin: 0 auto;
+    margin-top: 100px;
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 400px;
+    height: 400px;
+}
+
+#signupForm {
+    margin: 0 auto;
+    margin-top: 100px;
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 400px;
+    height: 400px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 20px;
+}
+
+button:hover {
+    background-color: #1189bc;
+}
+
+#response {
+    color: honeydew;
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #0b2aaa;
+    color: white;
+}
