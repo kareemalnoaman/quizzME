@@ -8,10 +8,14 @@ Prerequists:
 -Steps to run this app:
 
 -Clone this repo to your local machine: 
+
   $ git clone https://github.com/kareemalnoaman/quizzME.git
+  
 -Change directory: $ cd quizzME
+
 -In Terminal, type this command:
   $ nodemon server.js
+  
 -In the browser copy and paste url: 
   localhost:3000
   
