@@ -32,12 +32,14 @@ $ cd quizzME
 
 To use CRUD:
 
-As a random user, the user will see the landing page, from there go Game tab,
-The user will be able to play the math quiz game by generating questions then answer them in 10 minutes.
-After the 10 min past, user will be prompted to subscripe.
+As a random user, the user will see the landing page, from there go to Game tab,
+the user will be able to play the math quiz game by generating random math questions then answer them within 10 minutes.
+After the 10 minutes past, user will be prompted to subscripe options.
 
-Login page for returning users, or
-Register for new users in order to use the quiz game.
+In the case of subscripted user, the user will be prompted to log in or loging as a returned user.
+
+
+New user would be prompted to register.
 
 Two options: 1) general users can generate timed questions (10 mins each session)
 Subscriped users have unlimited access + help
