@@ -6,7 +6,7 @@ Prerequists:
 
 -Start MySQL server
 
--Connect yo the MySQL serrver via Workbench or Terminal to access database and tables
+-Connect to the MySQL server via Workbench or Terminal to access database.
 
 
 
@@ -32,12 +32,11 @@ $ cd quizzME
 
 To use CRUD:
 
-As a random user, the user will see the landing page, from there go to Game tab,
+As a random user, the user will see the landing Home page, from there go to Game tab,
 the user will be able to play the math quiz game by generating random math questions then answer them within 10 minutes.
-After the 10 minutes past, user will be prompted to subscripe options.
+After the 10 minutes have past, user will be prompted to subscripe.
 
 In the case of subscripted user, the user will be prompted to log in or loging as a returned user.
-
 
 New user would be prompted to register.
 
