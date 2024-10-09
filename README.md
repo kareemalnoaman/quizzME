@@ -34,11 +34,11 @@ To use CRUD:
 
 As a random user, the user will see the landing Home page, from there go to Game tab,
 the user will be able to play the math quiz game by generating random math questions then answer them within 10 minutes.
-After the 10 minutes have past, user will be prompted to subscripe.
+After the 10 minutes have past, user will be prompted to subscribe.
 
-In the case of subscripted user, the user will be prompted to log in or loging as a returned user.
+To subscribe, the user will be prompted to log in or loging as a returned user.
 
 New user would be prompted to register.
 
 Two options: 1) general users can generate timed questions (10 mins each session)
-Subscriped users have unlimited access + help
+Subscribed users have unlimited access + help.
