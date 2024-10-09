@@ -40,5 +40,7 @@ To subscribe, the user will be prompted to log in or loging as a returned user.
 
 New user would be prompted to register.
 
-Two options: 1) general users can generate timed questions (10 mins each session)
-Subscribed users have unlimited access + help.
+Two options: 
+
+1) general users can generate timed questions (10 mins each session)
+2) Subscribed users have unlimited access + help.
